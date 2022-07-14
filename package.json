@@ -1,19 +1,16 @@
 {
   "name": "cryptoroots",
-  "author": {
-    "name": "Akhilesh Thite",
-    "email": "hello@cryptoroots.xyz"
-  },
+  "author": "Akhilesh Thite",
   "version": "1.0.0",
-  "description": "",
+  "description": "cryptoroots.xyz is a platform that allows users to plant trees and earn climate change NFT badges.",
   "main": "truffle-config.js",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.10"
+    "@truffle/hdwallet-provider": "^2.0.10",
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "truffle test"
   },
-  "author": "",
   "license": "MIT"
 }
