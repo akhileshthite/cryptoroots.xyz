@@ -1,4 +1,16 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
+  background-color: #f7f8fc;
+  font-family: sohne-var, Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+.donation-card-screen {
+  background-image: url("./images/trees.png");
+  height: 850px;
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

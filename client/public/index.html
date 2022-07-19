@@ -7,17 +7,17 @@
     <meta name="theme-color" content="#000000" />
     <!--MetaTags-->
     <meta property="og:title" content="cryptoroots.xyz" />
-    <meta
-      property="og:description"
-      content=" "
-    />
+    <meta property="og:description" content="cryptoroots.xyz is a platform that allows users to plant trees and earn climate change NFT badges." />
     <meta name="author" content="Akhilesh Thite" />
     <meta
       name="image"
       property="og:image"
       content="https://ipfs.infura.io/ipfs/bafybeigz5m4bufiootogatgj7kpfcmyg7rw2tggpj6lo6jpshc2axlfdhu/cryptoroots.png/"
     />
-    <meta name="keywords" content="cryptoroots.xyz, cryptoroots, Crypto Roots, Trees, Plant Trees, NFT, Non-fungible Tokens, NGO, climate change NFTs, erc1155, erc721" />
+    <meta
+      name="keywords"
+      content="cryptoroots.xyz, cryptoroots, Crypto Roots, Trees, Plant Trees, NFT, Non-fungible Tokens, NGO, climate change NFTs, erc1155, erc721"
+    />
     <meta property="og:url" content="https://cryptoroots.xyz/" />
     <meta property="og:type" content="Website" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -51,5 +51,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script>
+      // Web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBEc5KNY_270HLcylWpYxieLadhaiNspYc",
+        authDomain: "cryptoroots-1efb3.firebaseapp.com",
+        projectId: "cryptoroots-1efb3",
+        storageBucket: "cryptoroots-1efb3.appspot.com",
+        messagingSenderId: "962722113148",
+        appId: "1:962722113148:web:099d8144fa1adf7c76cbf9",
+        measurementId: "G-TME2MT7PD2",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
