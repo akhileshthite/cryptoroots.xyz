@@ -60,7 +60,7 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
   //   // console.log(prevCountRef.current)
   // }, [trees]);
 
-  //   const COVALENT_KEY = ''
+  //   const COVALENT_KEY = 'ckey_e6e82169afa4494ba3b64eb1045'
   //   console.log(accountAddress)
   //   const url = `https://api.covalenthq.com/v1/${network}/address/${accountAddress}/balances_v2/?key=${COVALENT_KEY}`
   //   const response = await fetch(url)
@@ -153,18 +153,18 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
                         <button type="button" className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-9 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"><label htmlFor="100trees">100 🌲</label></button>
                         <center>
                         {isConnected ?
-                        // Wallet Connect button
+                        // Donate button
                         <button type="submit" disabled={claimingNft ? 1 : 0} className="flex mt-10 relative px-4 py-2 font-medium group">
                           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                           <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
                           <span className="relative text-black group-hover:text-white">{loadNftCard && trees != "0" ? "Loading..." : "Donate"}</span>
                         </button>
                         : 
-                        // Donate button
+                        // Wallet Connect button
                         <button type="button" className="flex mt-10 relative px-4 py-2 font-medium group" onClick={connectWallet}>
                           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                           <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-                          <span className="relative text-black group-hover:text-white">{isConnected ? "Wallet connected" : "Connect wallet"}</span>
+                          <span className="relative text-black group-hover:text-white">Connect wallet</span>
                         </button>
                         }
                         <p className="text-red-500 text-xs mt-4">{walletStatus}</p>

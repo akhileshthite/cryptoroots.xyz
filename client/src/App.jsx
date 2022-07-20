@@ -80,6 +80,7 @@ function App() {
                 <MyTreesScreen
                   connectWallet={connectWallet}
                   walletStatus={walletStatus}
+                  network={network}
                   web3={web3}
                   cryptoRootsContract={cryptoRootsContract}
                   isConnected={isConnected}
