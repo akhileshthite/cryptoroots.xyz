@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function MyTreesScreen({web3, connectWallet, cryptoRootsContract, isConnected, accountAddress}) {
+function MyTreesScreen({web3, connectWallet, walletStatus, cryptoRootsContract, isConnected, accountAddress}) {
   const [id1Owned, setid1Owned] = useState(0);
   const [id2Owned, setid2Owned] = useState(0);
   const [id3Owned, setid3Owned] = useState(0);
@@ -35,15 +35,16 @@ function MyTreesScreen({web3, connectWallet, cryptoRootsContract, isConnected, a
     <div>
       <section className="text-gray-600 body-font">
         <div className="flex flex-col text-center w-full mt-12">
-          <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-2">{accountAddress}</h2>
+          <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-4">{accountAddress}</h2>
           <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">Collected Badges</h1>
         </div>
         <center>
-          <button type="button" onClick={connectWallet} className="flex mt-6 relative px-4 py-2 font-medium group">
+          <button type="button" onClick={connectWallet} className="flex mt-4 relative px-4 py-2 font-medium group">
             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
             <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
             <span className="relative text-black group-hover:text-white">{isConnected ? "Wallet connected" : "Connect wallet"}</span>
           </button>
+          <p className="text-red-500 text-xs mt-4">{walletStatus}</p>
         </center>
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">

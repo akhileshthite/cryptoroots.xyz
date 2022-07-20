@@ -1,53 +1,41 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { totalSupply } from "../Stats";
 import logo from "../images/logo_header.png";
 
 
-function DonationCardScreen({web3, connectWallet, cryptoRootsContract, isConnected, accountAddress}) {
+function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContract, isConnected, accountAddress}) {
   const [trees, setTrees] = useState(0);
   const [claimingNft, setClaimingNft] = useState(false);
   // const [uri, setUri] = useState(undefined);
   const [nftImage, setNftImage] = useState(undefined);
+  const [loadNftCard, setLoadNftCard] = useState(undefined);
   const [totSupply, setTotSupply] = useState(0);
 
   // Donation card contract methods
   async function handleData(e){
     // Prevent from loading the page.
     e.preventDefault();
+    setLoadNftCard(!loadNftCard);
     // Get the number of trees and write the mint transaction.
     if (trees === '1') {
-      console.log("1")
-      web3.eth.getAccounts().then(function (accounts) {
-        cryptoRootsContract.methods.mint(1, 1).send({ from: accounts[0], gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
-      });
+      await cryptoRootsContract.methods.mint(1, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
     }
     else if (trees === '2'){
-      console.log("2")
-      web3.eth.getAccounts().then(function (accounts) {
-        cryptoRootsContract.methods.mint(2, 1).send({ from: accounts[0], gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
-      });
+      await cryptoRootsContract.methods.mint(2, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
     }
     else if (trees === '3'){
-      console.log("3")
-      web3.eth.getAccounts().then(function (accounts) {
-        cryptoRootsContract.methods.mint(3, 1).send({ from: accounts[0], gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
-      });
+      await cryptoRootsContract.methods.mint(3, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
     }
     else if (trees === '4'){
-      console.log("4")
-      web3.eth.getAccounts().then(function (accounts) {
-        cryptoRootsContract.methods.mint(4, 1).send({ from: accounts[0], gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
-      });
+      await cryptoRootsContract.methods.mint(4, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
     }
     else if (trees === '5'){
-      console.log("5")
-      web3.eth.getAccounts().then(function (accounts) {
-        cryptoRootsContract.methods.mint(5, 1).send({ from: accounts[0], gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
-      });
+      await cryptoRootsContract.methods.mint(5, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
     }
     else {
@@ -108,7 +96,7 @@ function DonationCardScreen({web3, connectWallet, cryptoRootsContract, isConnect
                   <p className="leading-relaxed">Area covered / mt^2</p>
                 </div>
                 <div className="p-4 sm:w-1/3 w-1/2">
-                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">10</h2>
+                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">0</h2>
                   <p className="leading-relaxed">CO2 reversed / year</p>
                 </div>
               </div>
@@ -123,15 +111,35 @@ function DonationCardScreen({web3, connectWallet, cryptoRootsContract, isConnect
                     <div className="border-2 border-gray-200 p-6 rounded-lg text-center shadow-lg" style={{backgroundColor: "#F7F8FC"}}>
                       {claimingNft ?
                       <>
-                        <h2>Thank you so much!</h2>
+                        <p className="text-green-500 text-lg">Thank you! 🎊</p>
+                        <p className="text-gray-700 mt-2 text-sm">For making the world a better place to live :)<br/>Here's your NFT badge.</p>
                         <center>
-                          <img className="rounded-md" width={100} src={nftImage} alt="NFT badge" />
+                          <img className="rounded-md mt-4" width={200} src={nftImage} alt="NFT badge" />
                         </center>
+                        <p className="text-gray-700 mt-4 text-sm">Find your badges on my trees page.</p>
+                        <Link to="/mytreesscreen">
+                          <button class="text-green-500 inline-flex items-center mt-4 md:mb-2 lg:mb-0">
+                            My trees page
+                            <svg
+                              class="w-4 h-4 ml-2"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="M5 12h14"></path>
+                              <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                          </button>
+                        </Link>
                       </>
                       :
                       <>
                       <h2 className="text-lg text-gray-900 font-medium title-font">$1 = 1 tree</h2>
                       <h3 className="mt-2 text-lg text-gray-900 font-medium title-font">cart: {trees} 🌱</h3>
+                      <hr className="mt-4"/>
                       <form className="mt-4" onSubmit={handleData}>
                         <input type="radio" id="1tree" name="1tree" value={1} onChange={(e)=>setTrees(e.target.value)} hidden/>
                         <button type="button" className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-10 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"><label htmlFor="1tree">1 🌲</label></button>
@@ -145,18 +153,21 @@ function DonationCardScreen({web3, connectWallet, cryptoRootsContract, isConnect
                         <button type="button" className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-9 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"><label htmlFor="100trees">100 🌲</label></button>
                         <center>
                         {isConnected ?
-                        <button type="submit" disabled={claimingNft ? 1 : 0} className="flex mt-12 relative px-4 py-2 font-medium group">
+                        // Wallet Connect button
+                        <button type="submit" disabled={claimingNft ? 1 : 0} className="flex mt-10 relative px-4 py-2 font-medium group">
                           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                           <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-                          <span className="relative text-black group-hover:text-white">{claimingNft ? "" : "Donate"}</span>
+                          <span className="relative text-black group-hover:text-white">{loadNftCard && trees != "0" ? "Loading..." : "Donate"}</span>
                         </button>
                         : 
-                        <button type="button" className="flex mt-12 relative px-4 py-2 font-medium group" onClick={connectWallet}>
+                        // Donate button
+                        <button type="button" className="flex mt-10 relative px-4 py-2 font-medium group" onClick={connectWallet}>
                           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                           <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
                           <span className="relative text-black group-hover:text-white">{isConnected ? "Wallet connected" : "Connect wallet"}</span>
                         </button>
                         }
+                        <p className="text-red-500 text-xs mt-4">{walletStatus}</p>
                       </center>
                       </form>
                       </>

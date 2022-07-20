@@ -13,6 +13,7 @@ import "./App.css";
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
+  const [walletStatus, setWalletStatus] = useState("");
   const [accountAddress, setAccountAddress] = useState(
     "Please connect your wallet to view your NFT badges."
   );
@@ -42,6 +43,9 @@ function App() {
         console.log("Error: ", error);
       }
     }
+    else {
+      setWalletStatus("⚠️ Wallet not found! Please install MetaMask.");
+    }
   }
 
   // useEffect(() => {
@@ -60,6 +64,7 @@ function App() {
               element={
                 <DonationCardScreen
                   connectWallet={connectWallet}
+                  walletStatus={walletStatus}
                   web3={web3}
                   cryptoRootsContract={cryptoRootsContract}
                   isConnected={isConnected}
@@ -74,6 +79,7 @@ function App() {
               element={
                 <MyTreesScreen
                   connectWallet={connectWallet}
+                  walletStatus={walletStatus}
                   web3={web3}
                   cryptoRootsContract={cryptoRootsContract}
                   isConnected={isConnected}
