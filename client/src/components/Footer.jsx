@@ -1,11 +1,17 @@
-import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Wave from "../images/wave.png";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+
+  function subscribe(){
+    setEmail("This feature will be available after mainnet launch.");
+  }
+
   return (
-    <footer className="text-gray-600 body-font">
+    <footer className="text-gray-600 body-font" id="footer">
       <div className="container px-5 py-24 mx-auto">
         <div className="block">
           <a class="twitter-timeline" href="https://twitter.com/cryptoroots_xyz?ref_src=twsrc%5Etfw">Tweets by cryptoroots_xyz</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -74,22 +80,22 @@ function Footer() {
               </h2>
               <li>
                 <a
+                  href="https://teamtrees.org/"
+                  className="text-gray-600 hover:text-gray-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  teamtrees.org
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on."
                   className="text-gray-600 hover:text-gray-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   ERC-1155
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://teamtrees.org/"
-                  className="text-gray-600 hover:text-gray-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  #teamtrees
                 </a>
               </li>
             </nav>
@@ -114,11 +120,11 @@ function Footer() {
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
-              <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded">
+              <button onClick={subscribe} className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded">
                 Subscribe
               </button>
             </div>
-            <p className="text-gray-500 text-sm mt-2 md:text-left text-center"></p>
+            <p className="text-gray-500 text-sm mt-2 md:text-left text-center">{email}</p>
           </div>
         </div>
       </div>

@@ -33,13 +33,14 @@ function Navbar() {
                   >
                     About
                   </a>
+                  {/* 
                   <a
                     href="#faq"
                     className="text-lg text-green-700 hover:bg-gray-100 px-3 py-2 rounded-md font-medium"
                   >
                     FAQ
                   </a>
-                  {/* <Link to="/support">
+                  <Link to="/support">
                     <button
                       className="text-lg text-green-700 hover:bg-gray-100 px-3 py-2 rounded-md font-medium"
                     >
@@ -131,18 +132,19 @@ function Navbar() {
                 >
                   About
                 </a>
+                {/*
                 <a
                   href="#faq"
                   className="text-green-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   FAQ
                 </a>
-                {/* <Link to="/support">
+                <Link to="/support">
                 <button className="text-green-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Support us
                 </button>
-              </Link> */}
+                </Link> */}
                 <Link to="/receipts">
                   <button className="text-green-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">
                     Donation receipts

@@ -29,7 +29,7 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
       setAreaCovered(areaCovered);
       // Calculate co2 offset of trees per year
       const co2Offset = totalSupply * 20 / 1000;
-      setCo2Offset(co2Offset + " t");
+      setCo2Offset(co2Offset + "t");
     })();
   }, []);
 
