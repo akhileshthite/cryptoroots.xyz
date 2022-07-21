@@ -8,7 +8,7 @@ function Footer() {
     <footer className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="block">
-          <a clasName="twitter-timeline" href="https://twitter.com/cryptoroots_xyz?ref_src=twsrc%5Etfw">Tweets by cryptoroots_xyz</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" href="https://twitter.com/cryptoroots_xyz?ref_src=twsrc%5Etfw">Tweets by cryptoroots_xyz</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <img className="mt-2" src={Wave} width={250} alt="Wave" />
         </div>
         <div className="flex flex-wrap md:text-left text-center order-first">
