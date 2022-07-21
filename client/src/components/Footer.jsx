@@ -24,7 +24,7 @@ function Footer() {
         </div>
         </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <nav className="list-none mb-10">
+            <nav className="list-none mb-10 mt-6 md:mt-0">
               <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 About us
               </h2>
