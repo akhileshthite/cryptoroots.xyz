@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../images/logo.png";
-import Wave from "../images/wave.png";
+import {TwitterTimelineEmbed} from "react-twitter-embed";
 
 function Footer() {
   const [email, setEmail] = useState("");
@@ -13,11 +13,16 @@ function Footer() {
   return (
     <footer className="text-gray-600 body-font" id="footer">
       <div className="container px-5 py-24 mx-auto">
-        <div className="block">
-          <a class="twitter-timeline" href="https://twitter.com/cryptoroots_xyz?ref_src=twsrc%5Etfw">Tweets by cryptoroots_xyz</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <img className="mt-2" src={Wave} width={250} alt="Wave" />
-        </div>
         <div className="flex flex-wrap md:text-left text-center order-first">
+        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+        <div className="block">
+          <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName="cryptoroots_xyz"
+            options={{ height: 275, width: 300 }}
+          />
+        </div>
+        </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <nav className="list-none mb-10">
               <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
