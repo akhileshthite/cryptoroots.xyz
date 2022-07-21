@@ -1,23 +1,44 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { totalSupply } from "../Stats";
+import Loader from "./Loader";
 import logo from "../images/logo_header.png";
 
 
 function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContract, isConnected, accountAddress}) {
   const [trees, setTrees] = useState(0);
   const [claimingNft, setClaimingNft] = useState(false);
-  // const [uri, setUri] = useState(undefined);
   const [nftImage, setNftImage] = useState(undefined);
   const [loadNftCard, setLoadNftCard] = useState(undefined);
-  const [totSupply, setTotSupply] = useState(0);
+  const [totalSupply, setTotalSupply] = useState(Loader);
+  const [co2Offset, setCo2Offset] = useState(Loader);
+  const [areaCovered, setAreaCovered] = useState(Loader);
+
+  // Display stats
+  useEffect(() => {
+    (async () => {
+      // Get the total supply (total trees planted)
+      const id1Minted = await cryptoRootsContract.methods.totalSupply(1).call().then( supply => { return supply });
+      const id2Minted = await cryptoRootsContract.methods.totalSupply(2).call().then( supply => { return supply });
+      const id3Minted = await cryptoRootsContract.methods.totalSupply(3).call().then( supply => { return supply });
+      const id4Minted = await cryptoRootsContract.methods.totalSupply(4).call().then( supply => { return supply });
+      const id5Minted = await cryptoRootsContract.methods.totalSupply(5).call().then( supply => { return supply });
+      const totalSupply = await Number(id1Minted) + Number(id2Minted)*5 + Number(id3Minted)*10 + Number(id4Minted)*20 + Number(id5Minted)*100;
+      setTotalSupply(totalSupply);
+      // Calculate area covered by trees per acre
+      const areaCovered = totalSupply / 500;
+      setAreaCovered(areaCovered);
+      // Calculate co2 offset of trees per year
+      const co2Offset = totalSupply * 20 / 1000;
+      setCo2Offset(co2Offset + " t");
+    })();
+  }, []);
 
   // Donation card contract methods
   async function handleData(e){
-    // Prevent from loading the page.
+    // Prevent from loading the page
     e.preventDefault();
     setLoadNftCard(!loadNftCard);
-    // Get the number of trees and write the mint transaction.
+    // Get the number of trees and write the mint transaction
     if (trees === '1') {
       await cryptoRootsContract.methods.mint(1, 1).send({ from: accountAddress, gas: 1500000, gasPrice: '80000000000', value: '1000000000000000000' });
       setClaimingNft(!claimingNft)
@@ -60,22 +81,6 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
   //   // console.log(prevCountRef.current)
   // }, [trees]);
 
-  //   const COVALENT_KEY = 'ckey_e6e82169afa4494ba3b64eb1045'
-  //   console.log(accountAddress)
-  //   const url = `https://api.covalenthq.com/v1/${network}/address/${accountAddress}/balances_v2/?key=${COVALENT_KEY}`
-  //   const response = await fetch(url)
-  //   const responseJson = await response.json()
-  //   console.log('Covalent balance response', responseJson)
-
-  async function supply(){
-    const sup = await cryptoRootsContract.methods.totalSupply(1).call().then( supply => { return supply });
-    console.log(sup)
-    const sup2 = await cryptoRootsContract.methods.totalSupply(2).call().then( supply => { return supply });
-    console.log(sup2)
-    let supplyaa = sup + sup2
-    setTotSupply(supplyaa);
-  }
-
   return (
       <div>
         <section className="donation-card-screen">
@@ -88,16 +93,16 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
             <div className="container px-16 py-6 mx-auto">
               <div className="flex flex-wrap -m-4 text-center">
                 <div className="p-4 sm:w-1/3 w-1/2">
-                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">0</h2>
+                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">{totalSupply}</h2>
                   <p className="leading-relaxed">Trees planted</p>
                 </div>
                 <div className="p-4 sm:w-1/3 w-1/2">
-                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">0</h2>
-                  <p className="leading-relaxed">Area covered / mt^2</p>
+                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">{areaCovered}</h2>
+                  <p className="leading-relaxed">Area covered / acre</p>
                 </div>
                 <div className="p-4 sm:w-1/3 w-1/2">
-                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">0</h2>
-                  <p className="leading-relaxed">CO2 reversed / year</p>
+                  <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">{co2Offset}</h2>
+                  <p className="leading-relaxed">CO2 offset / year</p>
                 </div>
               </div>
             </div>
@@ -164,7 +169,7 @@ function DonationCardScreen({web3, connectWallet, walletStatus, cryptoRootsContr
                         <button type="button" className="flex mt-10 relative px-4 py-2 font-medium group" onClick={connectWallet}>
                           <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                           <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-                          <span className="relative text-black group-hover:text-white">Connect wallet</span>
+                          <span className="relative text-black group-hover:text-white">{isConnected ? "Wallet connected" : "Connect wallet"}</span>
                         </button>
                         }
                         <p className="text-red-500 text-xs mt-4">{walletStatus}</p>

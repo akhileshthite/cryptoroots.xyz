@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
 import DonationCardScreen from "./components/DonationCardScreen";
@@ -47,10 +47,6 @@ function App() {
       setWalletStatus("⚠️ Wallet not found! Please install MetaMask.");
     }
   }
-
-  // useEffect(() => {
-  //   setIsConnected(!isConnected);
-  // }, []);
 
   return (
     <div id="App">

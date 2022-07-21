@@ -45,27 +45,27 @@ function MyTreesScreen({web3, connectWallet, walletStatus, network, cryptoRootsC
           <p className="text-red-500 text-xs mt-4">{walletStatus}</p>
         </center>
         }
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-wrap -m-4">
-            <div class="p-4 md:w-1/4">
-              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            <div className="p-4 md:w-1/4">
+              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <img
-                  class="lg:h-80 md:h-36 w-full object-cover object-center"
+                  className="lg:h-80 md:h-36 w-full object-cover object-center"
                   src="https://ipfs.infura.io/ipfs/bafybeibcujv2ccaav4fz3m4omwtanz4mddmrvlnsxoy2zqpfrkqjqfdi4q/5_trees.png/"
                   alt="blog"
                 />
-                <div class="p-6">
-                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                <div className="p-6">
+                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     NFT BADGE
                   </h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                     The Catalyzer
                   </h1>
-                  <div class="flex items-center flex-wrap ">
-                    <a class="text-green-500 inline-flex items-center md:mb-2 lg:mb-0">
+                  <div className="flex items-center flex-wrap ">
+                    <a href={`https://testnets.opensea.io/assets/${network.address}`} className="text-green-500 inline-flex items-center md:mb-2 lg:mb-0">
                       Learn More
                       <svg
-                        class="w-4 h-4 ml-2"
+                        className="w-4 h-4 ml-2"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         stroke-width="2"
