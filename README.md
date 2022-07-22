@@ -1,1 +1,0 @@
-# cryptoroots.xyz | HackFS 2022 submission
