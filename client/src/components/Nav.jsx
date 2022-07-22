@@ -61,7 +61,7 @@ function Navbar() {
               </div>
             </div>
             <span className="md:ml-0 sm:ml-0 ml-14 inline-flex items-center animation-ping text-md text-purple-600 p-1 border border-purple-500 bg-purple-200 rounded-md">
-              Beta (testnet)
+              Polygon (testnet)
             </span>
             <div className="-mr-2 flex md:hidden">
               <button

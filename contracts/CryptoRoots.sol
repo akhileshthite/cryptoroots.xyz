@@ -14,6 +14,43 @@
                      \______/ |__/                                                                         
 */
 
+// File: @chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol
+
+pragma solidity ^0.8.0;
+
+interface AggregatorV3Interface {
+    function decimals() external view returns (uint8);
+
+    function description() external view returns (string memory);
+
+    function version() external view returns (uint256);
+
+    // getRoundData and latestRoundData should both raise "No data present"
+    // if they do not have data to report, instead of returning unset values
+    // which could be misinterpreted as actual reported values.
+    function getRoundData(uint80 _roundId)
+        external
+        view
+        returns (
+            uint80 roundId,
+            int256 answer,
+            uint256 startedAt,
+            uint256 updatedAt,
+            uint80 answeredInRound
+        );
+
+    function latestRoundData()
+        external
+        view
+        returns (
+            uint80 roundId,
+            int256 answer,
+            uint256 startedAt,
+            uint256 updatedAt,
+            uint80 answeredInRound
+        );
+}
+
 // File: @openzeppelin/contracts/utils/Context.sol
 
 // OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
@@ -1450,6 +1487,13 @@ pragma solidity ^0.8.4;
 
 /// @custom:security-contact hello@cryptoroots.xyz
 contract CryptoRoots is ERC1155, Pausable, Ownable, ERC1155Supply {
+    AggregatorV3Interface internal priceFeed;
+    uint256 public usdId1;
+    uint256 public usdId2;
+    uint256 public usdId3;
+    uint256 public usdId4;
+    uint256 public usdId5;
+
     // Total supply of each id (supply[id1, id2, id3, id4, id5]) is 3 trillion.
     uint256[] supply = [
         3000000000000,
@@ -1459,13 +1503,111 @@ contract CryptoRoots is ERC1155, Pausable, Ownable, ERC1155Supply {
         3000000000000
     ];
     uint256[] mints = [0, 0, 0, 0, 0];
-    uint256[] cost = [1 ether, 1 ether, 1 ether, 1 ether, 1 ether];
+    uint256[] cost = [0.0001 ether, 0.0001 ether, 0.0001 ether, 0.0001 ether, 0.0001 ether];
 
     constructor()
         ERC1155(
             "ipfs://bafybeifgz4l3tfaoj2zbdxy3cu5xclzk4bfu2cmrpgz4qraxoylvxnawdy/{id}.json"
         )
-    {}
+    {
+        // Converting USD in wei
+        usdId1 = 1 * (10**18);
+        usdId2 = 5 * (10**18);
+        usdId3 = 10 * (10**18);
+        usdId4 = 20 * (10**18);
+        usdId5 = 100 * (10**18);
+        // ETH/USD Rinkeby price feed: 0x8A753747A1Fa494EC906cE90E9f37563A8AF630e
+        
+        priceFeed = AggregatorV3Interface(
+            0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
+        );
+    }
+
+    // Get the latest USDC price for each ID in wei
+    function getLatestPriceId1() public view returns (uint256) {
+        (
+            ,
+            /*uint80 roundID*/
+            int256 price,
+            ,
+            ,
+
+        ) = /*uint startedAt*/
+            /*uint timeStamp*/
+            /*uint80 answeredInRound*/
+            priceFeed.latestRoundData();
+        uint256 adjustedPrice = uint256(price) * 10**10;
+        uint256 costId1 = (usdId1 * 10**18) / adjustedPrice;
+        return costId1;
+    }
+
+    function getLatestPriceId2() public view returns (uint256) {
+        (
+            ,
+            /*uint80 roundID*/
+            int256 price,
+            ,
+            ,
+
+        ) = /*uint startedAt*/
+            /*uint timeStamp*/
+            /*uint80 answeredInRound*/
+            priceFeed.latestRoundData();
+        uint256 adjustedPrice = uint256(price) * 10**10;
+        uint256 costId2 = (usdId2 * 10**18) / adjustedPrice;
+        return costId2;
+    }
+
+    function getLatestPriceId3() public view returns (uint256) {
+        (
+            ,
+            /*uint80 roundID*/
+            int256 price,
+            ,
+            ,
+
+        ) = /*uint startedAt*/
+            /*uint timeStamp*/
+            /*uint80 answeredInRound*/
+            priceFeed.latestRoundData();
+        uint256 adjustedPrice = uint256(price) * 10**10;
+        uint256 costId3 = (usdId3 * 10**18) / adjustedPrice;
+        return costId3;
+    }
+
+    function getLatestPriceId4() public view returns (uint256) {
+        (
+            ,
+            /*uint80 roundID*/
+            int256 price,
+            ,
+            ,
+
+        ) = /*uint startedAt*/
+            /*uint timeStamp*/
+            /*uint80 answeredInRound*/
+            priceFeed.latestRoundData();
+        uint256 adjustedPrice = uint256(price) * 10**10;
+        uint256 costId4 = (usdId4 * 10**18) / adjustedPrice;
+        return costId4;
+    }
+
+    function getLatestPriceId5() public view returns (uint256) {
+        (
+            ,
+            /*uint80 roundID*/
+            int256 price,
+            ,
+            ,
+
+        ) = /*uint startedAt*/
+            /*uint timeStamp*/
+            /*uint80 answeredInRound*/
+            priceFeed.latestRoundData();
+        uint256 adjustedPrice = uint256(price) * 10**10;
+        uint256 costId5 = (usdId5 * 10**18) / adjustedPrice;
+        return costId5;
+    }
 
     // Public mint function
     function mint(uint256 id, uint256 amount) public payable {
