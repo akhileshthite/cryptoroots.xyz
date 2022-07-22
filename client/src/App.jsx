@@ -21,7 +21,7 @@ function App() {
   // Define web3
   const web3 = new Web3(window.ethereum);
   // Get network id
-  const network = cryptoRootsJson.networks[(4, 80001)];
+  const network = cryptoRootsJson.networks[4];
   // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
   const cryptoRootsContract = new web3.eth.Contract(
     cryptoRootsJson.abi,
