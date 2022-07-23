@@ -7,7 +7,7 @@ body {
   scroll-behavior: smooth;
 }
 .donation-card-screen {
-  background-image: url("./images/trees.png");
+  background-image: url("./images/trees.svg");
   height: 900px;
   background-attachment: scroll;
   background-position: center;

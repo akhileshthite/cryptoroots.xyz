@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
 import DonationCardScreen from "./components/DonationCardScreen";
@@ -10,8 +10,10 @@ import MyTreesScreen from "./components/MyTreesScreen";
 import Web3 from "web3";
 import cryptoRootsJson from "./contracts/CryptoRoots.json";
 import "./App.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [walletStatus, setWalletStatus] = useState("");
   const [accountAddress, setAccountAddress] = useState(
@@ -47,49 +49,69 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+
+  const style = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   return (
     <div id="App">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route>
-            <Route
-              path="/"
-              exact
-              element={
-                <DonationCardScreen
-                  connectWallet={connectWallet}
-                  walletStatus={walletStatus}
-                  web3={web3}
-                  cryptoRootsContract={cryptoRootsContract}
-                  isConnected={isConnected}
-                  accountAddress={accountAddress}
-                />
-              }
-            />
-            <Route path="/receipts" exact element={<DonationReceipts />} />
-            <Route
-              path="/mytreesscreen"
-              exact
-              element={
-                <MyTreesScreen
-                  connectWallet={connectWallet}
-                  walletStatus={walletStatus}
-                  network={network}
-                  web3={web3}
-                  cryptoRootsContract={cryptoRootsContract}
-                  isConnected={isConnected}
-                  accountAddress={accountAddress}
-                />
-              }
-            />
-          </Route>
-        </Routes>
-        <Routes>
-          <Route path="/" exact element={<Content />} />
-        </Routes>
-        <Footer />
-      </Router>
+      {loading ? (
+        <div style={style}>
+          <ClipLoader color={"#40C45D"} loading={loading} size={69} />
+        </div>
+      ) : (
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route>
+              <Route
+                path="/"
+                exact
+                element={
+                  <DonationCardScreen
+                    connectWallet={connectWallet}
+                    walletStatus={walletStatus}
+                    web3={web3}
+                    cryptoRootsContract={cryptoRootsContract}
+                    isConnected={isConnected}
+                    accountAddress={accountAddress}
+                  />
+                }
+              />
+              <Route path="/receipts" exact element={<DonationReceipts />} />
+              <Route
+                path="/mytreesscreen"
+                exact
+                element={
+                  <MyTreesScreen
+                    connectWallet={connectWallet}
+                    walletStatus={walletStatus}
+                    network={network}
+                    web3={web3}
+                    cryptoRootsContract={cryptoRootsContract}
+                    isConnected={isConnected}
+                    accountAddress={accountAddress}
+                  />
+                }
+              />
+            </Route>
+          </Routes>
+          <Routes>
+            <Route path="/" exact element={<Content />} />
+          </Routes>
+          <Footer />
+        </Router>
+      )}
     </div>
   );
 }
