@@ -214,7 +214,7 @@ function DonationCardScreen({
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-10 mx-auto">
               <div className="flex-wrap -m-4">
-                <div className="xl:w-1/4 md:w-1/2 p-4">
+                <div className="xl:w-1/2 2xl:w-1/4 md:w-1/2 p-4">
                   <div
                     className="border-2 border-gray-200 p-6 rounded-lg text-center shadow-lg"
                     style={{ backgroundColor: "#F7F8FC" }}

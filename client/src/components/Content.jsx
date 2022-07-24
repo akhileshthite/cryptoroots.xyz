@@ -12,7 +12,7 @@ function Content() {
       <section className="text-gray-600 body-font mt-6" id="about">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
-            <img className="mr-0 md:mr-8" src={Plant} alt="Plant" />
+            <img className="mr-0 md:mr-8" src={Plant} alt="Plant" style={{zIndex: "-1"}} />
             <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
               <h2
                 className="text-gray-600 sm:text-3xl text-2xl title-font font-light mb-1"

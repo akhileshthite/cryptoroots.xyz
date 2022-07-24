@@ -31,7 +31,6 @@ function App({ networkId }) {
       // Get network id
       const networkId = await web3.eth.net.getId();
       const network = cryptoRootsJson.networks[networkId];
-      console.log(network)
       setNetwork(network);
       // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
       const cryptoRootsContract = new web3.eth.Contract(
@@ -43,7 +42,6 @@ function App({ networkId }) {
       cryptoRootsContract.setProvider(window.ethereum);
     })();
   }, []);
-  console.log(network)
 
   // Connect to Metamask wallet
   async function connectWallet() {
