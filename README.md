@@ -17,6 +17,19 @@
 * **Tickets:** Get access to global environmental events/activities as NFT tickets.
 * **Community:** Show your environmental work, and collaborate with environmental activists all over the world.
 
+### After Hackathon tasks:
+
+- [] Leaderboard (maximum number of trees donated).
+- [] Transfer funds to stablecoin USDC on Polygon network for donations (research and implement Beconomy).
+- [] Use covalent to fetch the dashboard data i.e. trees planted (total supply).
+- [] Multiple wallet integration.
+- [] A co2 emission calculator (make a predictive ML model).
+- [] Show users how much energy is consumed per transaction by using filecoin.green API.
+- [] Clear Information on climate change and what we can do about it.
+- [] Fix bugs & improve UI.
+- [] Finalize the artwork before public launch.
+- [] Launch on Polygon Mainnet.
+
 ## Development
 
 ### Installation & setup
