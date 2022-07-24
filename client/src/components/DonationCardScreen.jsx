@@ -105,8 +105,6 @@ function DonationCardScreen({
     })();
   }, []);
 
-  console.log(id1Price);
-
   // Donation card contract methods
   async function handleData(e) {
     // Prevent from loading the page
