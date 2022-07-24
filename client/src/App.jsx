@@ -19,29 +19,42 @@ function App() {
   const [accountAddress, setAccountAddress] = useState(
     "Please connect your wallet to view your NFT badges."
   );
-  const [web3, setWeb3] = useState(undefined);
-  const [network, setNetwork] = useState(undefined);
-  const [cryptoRootsContract, setCryptoRootsContract] = useState(undefined);
+  // const [getWeb3, setGetWeb3] = useState(undefined);
+  // const [getNetwork, setGetNetwork] = useState(undefined);
+  // const [getCryptoRootsContract, setGetCryptoRootsContract] = useState(undefined);
 
-  useEffect(() => {
-    (async () => {
-      // Define web3
-      const web3 = new Web3(window.ethereum);
-      setWeb3(web3);
-      // Get network id
-      const networkId = await web3.eth.net.getId();
-      const network = cryptoRootsJson.networks[networkId];
-      setNetwork(network);
-      // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
-      const cryptoRootsContract = new web3.eth.Contract(
-        cryptoRootsJson.abi,
-        network.address
-      );
-      setCryptoRootsContract(cryptoRootsContract);
-      // Set provider
-      cryptoRootsContract.setProvider(window.ethereum);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     // Define web3
+  //     const web3 = new Web3(window.ethereum);
+  //     setGetWeb3(getWeb3);
+  //     // Get network id
+  //     const networkId = await web3.eth.net.getId();
+  //     const network = cryptoRootsJson.networks[networkId];
+
+  //     setGetNetwork(getNetwork);
+  //     // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
+  //     const cryptoRootsContract = new web3.eth.Contract(
+  //       cryptoRootsJson.abi,
+  //       network.address
+  //     );
+  //     setGetCryptoRootsContract(getCryptoRootsContract);
+  //     // Set provider
+  //     cryptoRootsContract.setProvider(window.ethereum);
+  //   })();
+  // }, []);
+
+  // Define web3
+  const web3 = new Web3(window.ethereum);
+  // Get network id
+  const network = cryptoRootsJson.networks[80001];
+  // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
+  const cryptoRootsContract = new web3.eth.Contract(
+    cryptoRootsJson.abi,
+    network.address
+  );
+  // Set provider
+  cryptoRootsContract.setProvider(window.ethereum);
 
   // Connect to Metamask wallet
   async function connectWallet() {
