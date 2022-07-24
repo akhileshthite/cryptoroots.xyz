@@ -2,10 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 function MyTreesScreen({
-  web3,
   connectWallet,
   walletStatus,
-  network,
   cryptoRootsContract,
   isConnected,
   accountAddress,

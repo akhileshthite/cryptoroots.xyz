@@ -4,7 +4,6 @@ import Loader from "./Loader";
 import logo from "../images/logo_header.png";
 
 function DonationCardScreen({
-  web3,
   connectWallet,
   walletStatus,
   cryptoRootsContract,

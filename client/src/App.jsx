@@ -12,7 +12,7 @@ import cryptoRootsJson from "./contracts/CryptoRoots.json";
 import "./App.css";
 import ClipLoader from "react-spinners/ClipLoader";
 
-function App({ networkId }) {
+function App() {
   const [loading, setLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [walletStatus, setWalletStatus] = useState("");
