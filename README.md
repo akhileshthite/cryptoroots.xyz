@@ -1,6 +1,6 @@
 
 <p align="center">
-    <img align="center" src="/client/src/images/logo_header.png" width="150" height="150"></img>
+    <img align="center" src="/client/src/images/logo_header.png" width="300"></img>
 </p>
 
 <h1 align="center">cryptoroots.xyz | HackFS 2022 submission</h1>
