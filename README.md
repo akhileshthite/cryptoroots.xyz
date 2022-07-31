@@ -3,7 +3,7 @@
     <img align="center" src="/client/src/images/logo_header.png" width="300"></img>
 </p>
 
-<h1 align="center">cryptoroots.xyz | HackFS 2022 submission</h1>
+<h1 align="center">cryptoroots.xyz</h1>
 
 [cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users to plant trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change NFT badges. All the NFT badges are [AI-generated](https://openai.com/blog/dall-e/) art, honoring the best artists in the world. Planting a tree is always better than spending millions on monkey images! Let’s use NFTs to save the planet!
 
@@ -17,19 +17,6 @@
 * **Tickets:** Get access to global environmental events/activities as NFT tickets.
 * **Community:** Show your environmental work, and collaborate with environmental activists all over the world.
 
-### After Hackathon tasks:
-
-- [ ] Leaderboard (maximum number of trees donated).
-- [ ] Transfer funds to stablecoin USDC on Polygon network for donations (research and implement Beconomy).
-- [ ] Use covalent to fetch the dashboard data i.e. trees planted (total supply).
-- [ ] Multiple wallet integration.
-- [ ] A co2 emission calculator (make a predictive ML model).
-- [ ] Show users how much energy is consumed per transaction by using filecoin.green API.
-- [ ] Clear Information on climate change and what we can do about it.
-- [ ] Fix bugs & improve UI.
-- [ ] Finalize the artwork before public launch.
-- [ ] Launch on Polygon Mainnet.
-
 ## Development
 
 ### Installation & setup
@@ -39,7 +26,7 @@ Make sure you have truffle installed on your computer.
 npm install -g truffle
 ```
 
-Ensure you create an `.env` file in `root` directory. Then to access the Ethereum network/node, create a project on [infura](https://infura.io/) and copy-paste the `infura project-id url` in `.env` with a variable name `INFURA_MATIC_TESTNET` or `INFURA_RINKEBY` (contracts of this dapp is deployed to rinkeby testnet).
+Ensure you create an `.env` file in `root` directory. Then to access the Ethereum network/node, create a project on [infura](https://infura.io/) and copy-paste the `infura project-id url` in `.env` with a variable name `INFURA_MATIC_TESTNET` or `INFURA_RINKEBY`.
 ```sh
 INFURA_MATIC_TESTNET=https://mainnet.infura.io/v3/YOUR_PROJECT_ID
 INFURA_RINKEBY=https://rinkeby.infura.io/v3/YOUR_PROJECT_ID
