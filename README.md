@@ -85,6 +85,13 @@ npm start
 Starting the development server...
 ```
 
+## Contribution
+
+* Thanks for your interest in contributing to cryptoroots.xyz. There are many ways you can contribute to the project.
+* To start, take a few minutes to read the "[contribution guide](https://github.com/akhileshthite/cryptoroots.xyz/blob/main/.github/CONTRIBUTING.md)".
+* We look forward to your [pull requests](https://github.com/akhileshthite/cryptoroots.xyz/pulls) and / or involvement in our [issues page](https://github.com/akhileshthite/cryptoroots.xyz/issues).
+
+
 ## License
 
 cryptoroots.xyz is licensed under the [MIT license](https://github.com/akhileshthite/cryptoroots.xyz/blob/main/LICENSE).
