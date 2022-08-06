@@ -28,6 +28,11 @@ Make sure you have truffle installed on your computer.
 npm install -g truffle
 ```
 
+```sh
+# Install truffle dependencies in root directory (./cryptoroots.xyz)
+npm install
+```
+
 Ensure you create an `.env` file in `root` directory. Then to access the Ethereum network/node, create a project on [infura](https://infura.io/) and copy-paste the `infura project-id url` in `.env` with a variable name `INFURA_MATIC_TESTNET` or `INFURA_RINKEBY`.
 
 ```sh

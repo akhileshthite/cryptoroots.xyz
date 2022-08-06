@@ -11,6 +11,7 @@ function DonationCardScreen({
   accountAddress,
 }) {
   const [trees, setTrees] = useState(0);
+  const [cart, setCart] = useState(0);
   const [claimingNft, setClaimingNft] = useState(false);
   const [nftImage, setNftImage] = useState(undefined);
   const [loadNftCard, setLoadNftCard] = useState(undefined);
@@ -176,6 +177,29 @@ function DonationCardScreen({
     setNftImage(nftStorageUri);
   }
 
+  // Update cart value
+  useEffect(() => {
+    if (trees != "0") {
+      try {
+        if (trees === "1") {
+          setCart("1");
+        } else if (trees === "2") {
+          setCart("5");
+        } else if (trees === "3") {
+          setCart("10");
+        } else if (trees === "4") {
+          setCart("20");
+        } else if (trees === "5") {
+          setCart("100");
+        } else {
+          setCart("0");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [trees]);
+
   return (
     <div>
       <section className="donation-card-screen">
@@ -261,17 +285,9 @@ function DonationCardScreen({
                           $1 = 1 tree
                         </h2>
                         <h3 className="mt-2 text-lg text-gray-900 font-medium title-font">
-                          cart: {trees} 🌱
+                          cart: {cart} 🌱
                         </h3>
-                        <p className="mt-2 text-xs text-gray-500 font-medium title-font">
-                          cart: id 1=1 tree, id 2=5 trees, id 5=20 trees, etc.
-                          <br />
-                        </p>
                         <hr className="mt-4" />
-                        <p className="mt-2 text-xs text-gray-500 font-medium title-font">
-                          Please click on the middle portion of the button (it's
-                          a "radio" hidden for label).
-                        </p>
                         <form className="mt-4" onSubmit={handleData}>
                           <input
                             type="radio"
@@ -284,9 +300,11 @@ function DonationCardScreen({
                            {" "}
                           <button
                             type="button"
-                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-10 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
+                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
                           >
-                            <label htmlFor="1tree">1 🌲</label>
+                            <label className="py-1 px-10" htmlFor="1tree">
+                              1 🌲
+                            </label>
                           </button>
                           <input
                             type="radio"
@@ -299,9 +317,11 @@ function DonationCardScreen({
                            {" "}
                           <button
                             type="button"
-                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-10 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
+                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
                           >
-                            <label htmlFor="5trees">5 🌲</label>
+                            <label className="py-1 px-10" htmlFor="5trees">
+                              5 🌲
+                            </label>
                           </button>
                           <input
                             type="radio"
@@ -314,9 +334,11 @@ function DonationCardScreen({
                            {" "}
                           <button
                             type="button"
-                            className="inline-flex m-2 ml-4 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-9 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
+                            className="inline-flex m-2 ml-4 text-gray-800 bg-green-100 shadow-sm border border-green-400 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
                           >
-                            <label htmlFor="10trees">10 🌲</label>
+                            <label className="py-1 px-9" htmlFor="10trees">
+                              10 🌲
+                            </label>
                           </button>
                           <input
                             type="radio"
@@ -329,9 +351,11 @@ function DonationCardScreen({
                            {" "}
                           <button
                             type="button"
-                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-9 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
+                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
                           >
-                            <label htmlFor="20trees">20 🌲</label>
+                            <label className="py-1 px-9" htmlFor="20trees">
+                              20 🌲
+                            </label>
                           </button>
                           <input
                             type="radio"
@@ -344,9 +368,11 @@ function DonationCardScreen({
                            {" "}
                           <button
                             type="button"
-                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 py-1 px-9 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
+                            className="inline-flex m-2 text-gray-800 bg-green-100 shadow-sm border border-green-400 focus:shadow-md focus:border-green-600 hover:bg-green-100 rounded text-lg"
                           >
-                            <label htmlFor="100trees">100 🌲</label>
+                            <label className="py-1 px-9" htmlFor="100trees">
+                              100 🌲
+                            </label>
                           </button>
                           <center>
                             {isConnected ? (
