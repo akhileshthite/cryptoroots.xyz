@@ -18,48 +18,50 @@ function MyTreesScreen({
   const [id3Image, setid3Image] = useState(undefined);
   const [id4Image, setid4Image] = useState(undefined);
   const [id5Image, setid5Image] = useState(undefined);
-  const [id1Metadata, setid1Metadata] = useState(undefined);
-  const [id2Metadata, setid2Metadata] = useState(undefined);
-  const [id3Metadata, setid3Metadata] = useState(undefined);
-  const [id4Metadata, setid4Metadata] = useState(undefined);
-  const [id5Metadata, setid5Metadata] = useState(undefined);
+  const [id1Name, setid1Name] = useState(undefined);
+  const [id2Name, setid2Name] = useState(undefined);
+  const [id3Name, setid3Name] = useState(undefined);
+  const [id4Name, setid4Name] = useState(undefined);
+  const [id5Name, setid5Name] = useState(undefined);
 
   if (isConnected) {
-    try {
-      // Get balance of each token ID from the user's account.
-      cryptoRootsContract.methods
-        .balanceOf(accountAddress, 1)
-        .call()
-        .then((token) => {
-          return setid1Owned(token);
-        });
-      cryptoRootsContract.methods
-        .balanceOf(accountAddress, 2)
-        .call()
-        .then((token) => {
-          return setid2Owned(token);
-        });
-      cryptoRootsContract.methods
-        .balanceOf(accountAddress, 3)
-        .call()
-        .then((token) => {
-          return setid3Owned(token);
-        });
-      cryptoRootsContract.methods
-        .balanceOf(accountAddress, 4)
-        .call()
-        .then((token) => {
-          return setid4Owned(token);
-        });
-      cryptoRootsContract.methods
-        .balanceOf(accountAddress, 5)
-        .call()
-        .then((token) => {
-          return setid5Owned(token);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    (async () => {
+      try {
+        // Get balance of each token ID from the user's account.
+        await cryptoRootsContract.methods
+          .balanceOf(accountAddress, 1)
+          .call()
+          .then((token) => {
+            return setid1Owned(token);
+          });
+        await cryptoRootsContract.methods
+          .balanceOf(accountAddress, 2)
+          .call()
+          .then((token) => {
+            return setid2Owned(token);
+          });
+        await cryptoRootsContract.methods
+          .balanceOf(accountAddress, 3)
+          .call()
+          .then((token) => {
+            return setid3Owned(token);
+          });
+        await cryptoRootsContract.methods
+          .balanceOf(accountAddress, 4)
+          .call()
+          .then((token) => {
+            return setid4Owned(token);
+          });
+        await cryptoRootsContract.methods
+          .balanceOf(accountAddress, 5)
+          .call()
+          .then((token) => {
+            return setid5Owned(token);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }
 
   useEffect(() => {
@@ -81,7 +83,8 @@ function MyTreesScreen({
         const id1Uri = gatewayUri.replace("{id}", 1);
         const id1Response = await fetch(id1Uri);
         const id1Metadata = await id1Response.json();
-        setid1Metadata(id1Metadata);
+        const nft1Name = id1Metadata.name;
+        setid1Name(nft1Name);
         const id1ImageUri = id1Metadata.image;
         const id1NftStorageUri = id1ImageUri.replace(
           "ipfs://",
@@ -92,7 +95,8 @@ function MyTreesScreen({
         const id2Uri = gatewayUri.replace("{id}", 2);
         const id2Response = await fetch(id2Uri);
         const id2Metadata = await id2Response.json();
-        setid2Metadata(id2Metadata);
+        const nft2Name = id2Metadata.name;
+        setid2Name(nft2Name);
         const id2ImageUri = id2Metadata.image;
         const id2NftStorageUri = id2ImageUri.replace(
           "ipfs://",
@@ -103,7 +107,8 @@ function MyTreesScreen({
         const id3Uri = gatewayUri.replace("{id}", 3);
         const id3Response = await fetch(id3Uri);
         const id3Metadata = await id3Response.json();
-        setid3Metadata(id3Metadata);
+        const nft3Name = id3Metadata.name;
+        setid3Name(nft3Name);
         const id3ImageUri = id3Metadata.image;
         const id3NftStorageUri = id3ImageUri.replace(
           "ipfs://",
@@ -114,7 +119,8 @@ function MyTreesScreen({
         const id4Uri = gatewayUri.replace("{id}", 4);
         const id4Response = await fetch(id4Uri);
         const id4Metadata = await id4Response.json();
-        setid4Metadata(id4Metadata);
+        const nft4Name = id4Metadata.name;
+        setid4Name(nft4Name);
         const id4ImageUri = id4Metadata.image;
         const id4NftStorageUri = id4ImageUri.replace(
           "ipfs://",
@@ -125,7 +131,8 @@ function MyTreesScreen({
         const id5Uri = gatewayUri.replace("{id}", 5);
         const id5Response = await fetch(id5Uri);
         const id5Metadata = await id5Response.json();
-        setid5Metadata(id5Metadata);
+        const nft5Name = id5Metadata.name;
+        setid5Name(nft5Name);
         const id5ImageUri = id5Metadata.image;
         const id5NftStorageUri = id5ImageUri.replace(
           "ipfs://",
@@ -175,7 +182,7 @@ function MyTreesScreen({
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
-            {id1Owned > 0 ? (
+            {id1Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
@@ -188,7 +195,7 @@ function MyTreesScreen({
                       NFT BADGE
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {id1Metadata.name}
+                      {id1Name}
                     </h1>
                     <div className="flex items-center flex-wrap ">
                       <a
@@ -227,7 +234,7 @@ function MyTreesScreen({
             ) : (
               ""
             )}
-            {id2Owned > 0 ? (
+            {id2Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
@@ -240,7 +247,7 @@ function MyTreesScreen({
                       NFT BADGE
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {id2Metadata.name}
+                      {id2Name}
                     </h1>
                     <div className="flex items-center flex-wrap ">
                       <a
@@ -279,7 +286,7 @@ function MyTreesScreen({
             ) : (
               ""
             )}
-            {id3Owned > 0 ? (
+            {id3Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
@@ -292,7 +299,7 @@ function MyTreesScreen({
                       NFT BADGE
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {id3Metadata.name}
+                      {id3Name}
                     </h1>
                     <div className="flex items-center flex-wrap ">
                       <a
@@ -331,7 +338,7 @@ function MyTreesScreen({
             ) : (
               ""
             )}
-            {id4Owned > 0 ? (
+            {id4Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
@@ -344,7 +351,7 @@ function MyTreesScreen({
                       NFT BADGE
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {id4Metadata.name}
+                      {id4Name}
                     </h1>
                     <div className="flex items-center flex-wrap ">
                       <a
@@ -383,7 +390,7 @@ function MyTreesScreen({
             ) : (
               ""
             )}
-            {id5Owned > 0 ? (
+            {id5Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
@@ -396,7 +403,7 @@ function MyTreesScreen({
                       NFT BADGE
                     </h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {id5Metadata.name}
+                      {id5Name}
                     </h1>
                     <div className="flex items-center flex-wrap ">
                       <a

@@ -57,7 +57,7 @@ function Content() {
                       <b>19 million+</b> trees are in the ground!.
                       <b>
                         {" "}
-                        100% of the cryptoroot's funds will be donated to
+                        100% of the cryptoroots funds will be donated to
                         #teamtrees.
                       </b>
                     </p>
@@ -133,7 +133,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Offset carbon emission
+                    <b>Offset carbon emission:</b> Plant trees! An average grown tree offsets 24kg of co2/year.
                   </span>
                 </div>
               </div>
@@ -152,7 +152,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Save soil
+                    <b>Save soil:</b> Because of soil extinction, the number of microbes (8 billion in a handful of soil) is decreasing. Soil is a major source of nutrients needed by plants for growth. Trees are the solution! They reduce soil erosion.
                   </span>
                 </div>
               </div>
@@ -171,7 +171,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Show your environmental impact
+                    <b>Climate change awareness:</b> Show your environmental impact, NFTs are verifiable digital assets on the blockchain.
                   </span>
                 </div>
               </div>
@@ -190,7 +190,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Gift plants!
+                    <b>Gifts:</b> Gift plants instead of things that produce carbon.
                   </span>
                 </div>
               </div>
@@ -209,7 +209,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Get access to global events (tickets)
+                    <b>Tickets:</b> Get access to global environmental events/activities as NFT tickets.
                   </span>
                 </div>
               </div>
@@ -228,7 +228,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    Build community
+                    <b>Community:</b> Show your environmental work, and collaborate with environmental activists all over the world.
                   </span>
                 </div>
               </div>
