@@ -90,7 +90,7 @@ function DonationCardScreen({
           return supply;
         });
       const totalSupply =
-        (await Number(id1Minted)) +
+        Number(id1Minted) +
         Number(id2Minted) * 5 +
         Number(id3Minted) * 10 +
         Number(id4Minted) * 20 +
@@ -215,7 +215,7 @@ function DonationCardScreen({
                 <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">
                   {totalSupply}
                 </h2>
-                <p className="leading-relaxed">Trees planted</p>
+                <p className="leading-relaxed">Total trees planted</p>
               </div>
               <div className="p-4 sm:w-1/3 w-1/2">
                 <h2 className="title-font font-medium sm:text-5xl text-3xl text-gray-700">

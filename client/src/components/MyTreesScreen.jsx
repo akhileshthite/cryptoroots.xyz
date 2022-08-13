@@ -23,6 +23,9 @@ function MyTreesScreen({
   const [id3Name, setid3Name] = useState(undefined);
   const [id4Name, setid4Name] = useState(undefined);
   const [id5Name, setid5Name] = useState(undefined);
+  const [totalTrees, setTotalTrees] = useState(null);
+  const [co2Offset, setCo2Offset] = useState(null);
+  const [areaCovered, setAreaCovered] = useState(null);
 
   if (isConnected) {
     (async () => {
@@ -145,6 +148,25 @@ function MyTreesScreen({
     })();
   }, []);
 
+  // Display total tree stats of an individual.
+  useEffect(() => {
+    (async () => {
+      const treesPlanted =
+        (await Number(id1Owned)) +
+        Number(id2Owned) * 5 +
+        Number(id3Owned) * 10 +
+        Number(id4Owned) * 20 +
+        Number(id5Owned) * 100;
+      setTotalTrees(treesPlanted);
+      // Calculate area covered by trees per acre
+      const areaCovered = treesPlanted / 500;
+      setAreaCovered(areaCovered);
+      // Calculate co2 offset of trees per year
+      const co2Offset = (treesPlanted * 20) / 1000;
+      setCo2Offset(co2Offset + "t");
+    })();
+  }, [id1Owned, id2Owned, id3Owned, id4Owned, id5Owned]);
+
   // const COVALENT_KEY = 'ckey_e6e82169afa4494ba3b64eb1045'
   // const covalentApi = `https://api.covalenthq.com/v1/${network}/tokens/${network.address}/nft_metadata/1/?key=${COVALENT_KEY}`
   // console.log(covalentApi)
@@ -158,9 +180,10 @@ function MyTreesScreen({
           {accountAddress}
         </h2>
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
-          Collected Badges
+          Impact Dashboard
         </h1>
       </div>
+      {/* wallet */}
       {isConnected ? (
         ""
       ) : (
@@ -179,8 +202,41 @@ function MyTreesScreen({
           <p className="text-red-500 text-xs mt-4">{walletStatus}</p>
         </center>
       )}
+      {isConnected ? (
+        <>
+          {/* Stats */}
+          <section className="text-gray-600 body-font">
+            <div className="container px-16 mt-10 mb-10 mx-auto">
+              <div className="flex flex-wrap -m-4 text-center">
+                <div className="p-4 sm:w-1/3 w-1/2">
+                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-700">
+                    {totalTrees}
+                  </h2>
+                  <p className="leading-relaxed">Trees planted by me</p>
+                </div>
+                <div className="p-4 sm:w-1/3 w-1/2">
+                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-700">
+                    {areaCovered}
+                  </h2>
+                  <p className="leading-relaxed">Area covered / acre</p>
+                </div>
+                <div className="p-4 sm:w-1/3 w-1/2">
+                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-700">
+                    {co2Offset}
+                  </h2>
+                  <p className="leading-relaxed">CO2 offset / year</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr></hr>
+        </>
+      ) : (
+        ""
+      )}
+      {/* main */}
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-20 mx-auto">
           <div className="flex flex-wrap -m-4">
             {id1Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">
