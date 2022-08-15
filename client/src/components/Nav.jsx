@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Logo from "../images/logo.png";
 
-function Navbar() {
+function Navbar({ network }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
+      {network != "137" && network != "80001" && network != "4" ? (
+        <div className="text-center w-full rounded-sm shadow-md p-2 bg-red-200">
+          <p className="text-gray-600">
+            ⚠️ Please switch your network to polygon-mumbai or rinkeby.
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
       <nav className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">

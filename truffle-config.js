@@ -12,8 +12,8 @@ module.exports = {
     matic_testnet: {
       provider: function () {
         return new HDWalletProvider(
-          process.env.MNEMONIC,
-          process.env.INFURA_MATIC_TESTNET
+          process.env.REACT_APP_MNEMONIC,
+          process.env.REACT_APP_INFURA_MATIC_TESTNET
         );
       },
       network_id: 80001,
@@ -23,8 +23,8 @@ module.exports = {
     rinkeby: {
       provider: function () {
         return new HDWalletProvider(
-          process.env.MNEMONIC,
-          process.env.INFURA_RINKEBY
+          process.env.REACT_APP_MNEMONIC,
+          process.env.REACT_APP_INFURA_RINKEBY
         );
       },
       network_id: 4,

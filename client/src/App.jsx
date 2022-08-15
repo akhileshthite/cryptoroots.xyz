@@ -8,9 +8,12 @@ import Content from "./components/Content";
 import DonationReceipts from "./components/DonationReceipts";
 import MyTreesScreen from "./components/MyTreesScreen";
 import Web3 from "web3";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import Web3Modal from "web3modal";
 import cryptoRootsJson from "./contracts/CryptoRoots.json";
 import "./App.css";
 import ClipLoader from "react-spinners/ClipLoader";
+require("dotenv").config();
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -19,57 +22,58 @@ function App() {
   const [accountAddress, setAccountAddress] = useState(
     "Please connect your wallet to view your NFT badges."
   );
-  // const [getWeb3, setGetWeb3] = useState(undefined);
-  // const [getNetwork, setGetNetwork] = useState(undefined);
-  // const [getCryptoRootsContract, setGetCryptoRootsContract] = useState(undefined);
+  const [getWeb3, setGetWeb3] = useState(undefined);
+  const [getNetwork, setGetNetwork] = useState(undefined);
+  const [getCryptoRootsContract, setGetCryptoRootsContract] =
+    useState(undefined);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     // Define web3
-  //     const web3 = new Web3(window.ethereum);
-  //     setGetWeb3(getWeb3);
-  //     // Get network id
-  //     const networkId = await web3.eth.net.getId();
-  //     const network = cryptoRootsJson.networks[networkId];
+  useEffect(() => {
+    (async () => {
+      // Define web3
+      const web3 = new Web3(window.ethereum);
+      setGetWeb3(web3);
+      // Get network id
+      const networkId = await web3.eth.getChainId();
+      setGetNetwork(networkId);
+      const network = cryptoRootsJson.networks[networkId];
+      // Instantiate smart contract instance
+      const cryptoRootsContract = new web3.eth.Contract(
+        cryptoRootsJson.abi,
+        network && network.address
+      );
+      setGetCryptoRootsContract(cryptoRootsContract);
+      // Set provider
+      cryptoRootsContract.setProvider(window.ethereum);
+    })();
+  }, []);
 
-  //     setGetNetwork(getNetwork);
-  //     // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
-  //     const cryptoRootsContract = new web3.eth.Contract(
-  //       cryptoRootsJson.abi,
-  //       network.address
-  //     );
-  //     setGetCryptoRootsContract(getCryptoRootsContract);
-  //     // Set provider
-  //     cryptoRootsContract.setProvider(window.ethereum);
-  //   })();
-  // }, []);
-
-  // Define web3
-  const web3 = new Web3(window.ethereum);
-  // Get network id
-  const network = cryptoRootsJson.networks[80001];
-  // Instantiate smart contract instance i.e. contract(ABI, deployed network contract address)
-  const cryptoRootsContract = new web3.eth.Contract(
-    cryptoRootsJson.abi,
-    network.address
-  );
-  // Set provider
-  cryptoRootsContract.setProvider(window.ethereum);
-
-  // Connect to Metamask wallet
+  // Connect to wallet
   async function connectWallet() {
-    if (window.ethereum) {
-      try {
-        const account = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAccountAddress(account[0]);
+    try {
+      const web3Modal = new Web3Modal({
+        cacheProvider: false,
+        providerOptions: {
+          walletconnect: {
+            package: WalletConnectProvider,
+            options: {
+              // rpc: {
+              //   80001: "https://rpc-mumbai.matic.today/",
+              // },
+              infuraId: { 80001: process.env.REACT_APP_INFURA_MATIC_TESTNET },
+            },
+          },
+        },
+      });
+      const provider = await web3Modal.connect();
+      const web3 = new Web3(provider);
+      if (web3) {
         setIsConnected(!isConnected);
-      } catch (error) {
-        console.log("Error: ", error);
+        setAccountAddress(provider.selectedAddress);
+      } else {
+        setWalletStatus("⚠️ Wallet not found! Please install MetaMask.");
       }
-    } else {
-      setWalletStatus("⚠️ Wallet not found! Please install MetaMask.");
+    } catch (error) {
+      console.log("Error: ", error);
     }
   }
 
@@ -77,7 +81,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 3690);
   }, []);
 
   const style = {
@@ -94,47 +98,61 @@ function App() {
           <ClipLoader color={"#40C45D"} loading={loading} size={69} />
         </div>
       ) : (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route>
-              <Route
-                path="/"
-                exact
-                element={
-                  <DonationCardScreen
-                    connectWallet={connectWallet}
-                    walletStatus={walletStatus}
-                    web3={web3}
-                    cryptoRootsContract={cryptoRootsContract}
-                    isConnected={isConnected}
-                    accountAddress={accountAddress}
+        <>
+          {getWeb3 && accountAddress && getCryptoRootsContract ? (
+            <Router>
+              <Navbar network={getNetwork} />
+              <Routes>
+                <Route>
+                  <Route
+                    path="/"
+                    exact
+                    element={
+                      <DonationCardScreen
+                        connectWallet={connectWallet}
+                        walletStatus={walletStatus}
+                        web3={getWeb3}
+                        cryptoRootsContract={getCryptoRootsContract}
+                        isConnected={isConnected}
+                        accountAddress={accountAddress}
+                      />
+                    }
                   />
-                }
-              />
-              <Route path="/receipts" exact element={<DonationReceipts />} />
-              <Route
-                path="/mytreesscreen"
-                exact
-                element={
-                  <MyTreesScreen
-                    connectWallet={connectWallet}
-                    walletStatus={walletStatus}
-                    network={network}
-                    web3={web3}
-                    cryptoRootsContract={cryptoRootsContract}
-                    isConnected={isConnected}
-                    accountAddress={accountAddress}
+                  <Route
+                    path="/receipts"
+                    exact
+                    element={<DonationReceipts />}
                   />
-                }
-              />
-            </Route>
-          </Routes>
-          <Routes>
-            <Route path="/" exact element={<Content />} />
-          </Routes>
-          <Footer />
-        </Router>
+                  <Route
+                    path="/mytreesscreen"
+                    exact
+                    element={
+                      <MyTreesScreen
+                        connectWallet={connectWallet}
+                        walletStatus={walletStatus}
+                        web3={getWeb3}
+                        cryptoRootsContract={getCryptoRootsContract}
+                        isConnected={isConnected}
+                        accountAddress={accountAddress}
+                      />
+                    }
+                  />
+                </Route>
+              </Routes>
+              <Routes>
+                <Route path="/" exact element={<Content />} />
+              </Routes>
+              <Footer />
+            </Router>
+          ) : (
+            <div className="text-center w-full rounded-sm shadow-md p-2 bg-gray-200">
+              <p className="text-gray-500">
+                ⚠️ Web3 is not injected! Please install MetaMask in your
+                browser.
+              </p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

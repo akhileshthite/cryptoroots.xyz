@@ -152,7 +152,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    <b>Save soil:</b> Because of soil extinction, the number of microbes (8 billion in a handful of soil) is decreasing. Soil is a major source of nutrients needed by plants for growth. Trees are the solution! They reduce soil erosion.
+                    <b>Save soil:</b> The number of microbes (8 billion in a handful of soil) is decreasing. Soil is a major source of nutrients needed by plants for growth. Trees reduce soil erosion.
                   </span>
                 </div>
               </div>
@@ -228,7 +228,7 @@ function Content() {
                     <path d="M22 4L12 14.01l-3-3"></path>
                   </svg>
                   <span class="title-font font-medium">
-                    <b>Community:</b> Show your environmental work, and collaborate with environmental activists all over the world.
+                    <b>Community:</b> Turn donations into NFTs! Show your environmental work, and collaborate with environmental activists all over the world.
                   </span>
                 </div>
               </div>
