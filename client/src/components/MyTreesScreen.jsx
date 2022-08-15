@@ -175,12 +175,12 @@ function MyTreesScreen({
 
   return (
     <div>
-      <div className="flex flex-col text-center w-full mt-12">
+      <div className="flex flex-col text-center w-full mt-10">
         <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-4">
           {accountAddress}
         </h2>
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
-          Impact Dashboard
+          Tree Dashboard
         </h1>
       </div>
       {/* wallet */}
@@ -234,9 +234,22 @@ function MyTreesScreen({
       ) : (
         ""
       )}
+      {isConnected && totalTrees === 0 ? (
+        <p className="mt-4 text-center text-gray-700">Zero trees :/</p>
+      ) : (
+        <>
+          {isConnected ? (
+            <p className="mt-4 text-center text-gray-700">
+              Climate change badges:
+            </p>
+          ) : (
+            ""
+          )}
+        </>
+      )}
       {/* main */}
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-20 mx-auto">
+        <div className="container px-5 py-14 mx-auto">
           <div className="flex flex-wrap -m-4">
             {id1Owned > 0 && isConnected ? (
               <div className="p-4 md:w-1/4">

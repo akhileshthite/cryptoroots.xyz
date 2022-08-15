@@ -248,7 +248,7 @@ function DonationCardScreen({
                         <p className="text-gray-700 mt-2 text-sm">
                           For making the world a better place to live :)
                           <br />
-                          Here's your NFT badge.
+                          Here's your climate change NFT badge.
                         </p>
                         <center>
                           <img
@@ -259,13 +259,13 @@ function DonationCardScreen({
                           />
                         </center>
                         <p className="text-gray-700 mt-4 text-sm">
-                          Find your badges on my trees page.
+                          Track your trees on "My trees page".
                         </p>
                         <Link to="/mytreesscreen">
                           <button class="text-green-500 inline-flex items-center mt-4 md:mb-2 lg:mb-0">
                             My trees page
                             <svg
-                              class="w-4 h-4 ml-2"
+                              class="w-4 h-4 ml-1"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                               stroke-width="2"

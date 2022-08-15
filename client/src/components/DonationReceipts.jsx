@@ -34,7 +34,7 @@ function DonationReceipts() {
                 </p>
                 <a
                   className="text-green-500 hover:text-green-600 inline-flex items-center mt-4"
-                  href="https://ipfs.infura.io/ipfs/bafybeifm2iw4dn4pgrpdrcuhgyso2hlmwxz4hutd5c4acg2dzaeafj5zqy/Example_donation_receipt.pdf/"
+                  href="https://dweb.link/ipfs/bafybeifm2iw4dn4pgrpdrcuhgyso2hlmwxz4hutd5c4acg2dzaeafj5zqy/Example_donation_receipt.pdf/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -75,7 +75,7 @@ function DonationReceipts() {
                 </p>
                 <a
                   className="text-green-500 hover:text-green-600 inline-flex items-center mt-4"
-                  href="https://ipfs.infura.io/ipfs/bafybeifm2iw4dn4pgrpdrcuhgyso2hlmwxz4hutd5c4acg2dzaeafj5zqy/Example_donation_receipt.pdf/"
+                  href="https://dweb.link/ipfs/bafybeifm2iw4dn4pgrpdrcuhgyso2hlmwxz4hutd5c4acg2dzaeafj5zqy/Example_donation_receipt.pdf/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
