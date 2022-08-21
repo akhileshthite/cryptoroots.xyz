@@ -9,6 +9,7 @@ import DonationReceipts from "./components/DonationReceipts";
 import MyTreesScreen from "./components/MyTreesScreen";
 import Web3 from "web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import { sequence } from "0xsequence";
 import Web3Modal from "web3modal";
 import cryptoRootsJson from "./contracts/CryptoRoots.json";
 import "./App.css";
@@ -51,15 +52,24 @@ function App() {
   async function connectWallet() {
     try {
       const web3Modal = new Web3Modal({
+        // network: "rinkeby",
         cacheProvider: false,
         providerOptions: {
           walletconnect: {
             package: WalletConnectProvider,
             options: {
-              // rpc: {
-              //   80001: "https://rpc-mumbai.matic.today/",
-              // },
-              infuraId: { 80001: process.env.REACT_APP_INFURA_MATIC_TESTNET },
+              network: "mumbai",
+              rpc: {
+                80001: "https://polygon-mumbai.infura.io/v3/",
+              },
+              infuraId: process.env.REACT_APP_INFURA_MATIC_TESTNET,
+            },
+          },
+          sequence: {
+            package: sequence,
+            options: {
+              appName: "cryptoroots.xyz",
+              defaultNetwork: "mumbai",
             },
           },
         },
@@ -68,7 +78,10 @@ function App() {
       const web3 = new Web3(provider);
       if (web3) {
         setIsConnected(!isConnected);
-        setAccountAddress(provider.selectedAddress);
+        // Get account address
+        const accounts = await web3.eth.getAccounts();
+        const account = accounts[0];
+        setAccountAddress(account);
       } else {
         setWalletStatus("⚠️ Wallet not found! Please install MetaMask.");
       }
@@ -99,7 +112,7 @@ function App() {
         </div>
       ) : (
         <>
-          {getWeb3 && accountAddress && getCryptoRootsContract ? (
+          {getWeb3 && getCryptoRootsContract ? (
             <Router>
               <Navbar network={getNetwork} />
               <Routes>
