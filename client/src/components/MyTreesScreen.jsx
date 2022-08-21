@@ -167,12 +167,6 @@ function MyTreesScreen({
     })();
   }, [id1Owned, id2Owned, id3Owned, id4Owned, id5Owned]);
 
-  // const COVALENT_KEY = 'ckey_e6e82169afa4494ba3b64eb1045'
-  // const covalentApi = `https://api.covalenthq.com/v1/${network}/tokens/${network.address}/nft_metadata/1/?key=${COVALENT_KEY}`
-  // console.log(covalentApi)
-  // const response = await fetch(covalentApi).then(response => {return response.json()})
-  // console.log(response)
-
   return (
     <div>
       <div className="flex flex-col text-center w-full mt-10">

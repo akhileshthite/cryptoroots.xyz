@@ -27,6 +27,7 @@ function App() {
   const [getNetwork, setGetNetwork] = useState(undefined);
   const [getCryptoRootsContract, setGetCryptoRootsContract] =
     useState(undefined);
+  const [contractAddress, setContractAddress] = useState(undefined);
 
   useEffect(() => {
     (async () => {
@@ -37,6 +38,7 @@ function App() {
       const networkId = await web3.eth.getChainId();
       setGetNetwork(networkId);
       const network = cryptoRootsJson.networks[networkId];
+      setContractAddress(network.address);
       // Instantiate smart contract instance
       const cryptoRootsContract = new web3.eth.Contract(
         cryptoRootsJson.abi,
@@ -52,7 +54,6 @@ function App() {
   async function connectWallet() {
     try {
       const web3Modal = new Web3Modal({
-        // network: "rinkeby",
         cacheProvider: false,
         providerOptions: {
           walletconnect: {
@@ -112,7 +113,7 @@ function App() {
         </div>
       ) : (
         <>
-          {getWeb3 && getCryptoRootsContract ? (
+          {getWeb3 && accountAddress && getCryptoRootsContract ? (
             <Router>
               <Navbar network={getNetwork} />
               <Routes>
@@ -155,7 +156,7 @@ function App() {
               <Routes>
                 <Route path="/" exact element={<Content />} />
               </Routes>
-              <Footer />
+              <Footer contractAddress={contractAddress} />
             </Router>
           ) : (
             <div className="text-center w-full rounded-sm shadow-md p-2 bg-gray-200">

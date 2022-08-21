@@ -18,7 +18,7 @@ function DonationReceipts() {
                 <span className="font-semibold title-font text-gray-700">
                   Rcpt 1
                 </span>
-                <span className="mt-1 text-gray-500 text-sm">25 Aug 2022</span>
+                <span className="mt-1 text-gray-500 text-sm">22 Aug 2022</span>
               </div>
               <div className="md:flex-grow">
                 <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
@@ -59,7 +59,7 @@ function DonationReceipts() {
                 <span className="font-semibold title-font text-gray-700">
                   Rcpt 0
                 </span>
-                <span className="mt-1 text-gray-500 text-sm">25 Jul 2022</span>
+                <span className="mt-1 text-gray-500 text-sm">15 Jun 2022</span>
               </div>
               <div className="md:flex-grow">
                 <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">

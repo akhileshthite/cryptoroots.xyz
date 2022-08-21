@@ -1,28 +1,49 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import db from "../firebase";
 import Logo from "../images/logo.png";
-import {TwitterTimelineEmbed} from "react-twitter-embed";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-function Footer() {
-  const [email, setEmail] = useState("");
+function Footer({ contractAddress }) {
+  const [input, setInput] = useState("");
+  const [subscribe, setSubscribe] = useState("");
 
-  function subscribe(){
-    setEmail("This feature will be available after mainnet launch.");
+  function inputHandler(e) {
+    setInput(e.target.value);
+  }
+
+  async function submitHandler(e) {
+    e.preventDefault();
+    if (input) {
+      console.log(input);
+      await db.collection("emails").add({
+        email: input,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      setSubscribe("Subscribed successfully!");
+      setTimeout(() => {
+        setSubscribe("");
+      }, 3690);
+    }
+  }
+
+  function notReleased() {
+    alert("Under construction.");
   }
 
   return (
     <footer className="text-gray-600 body-font" id="footer">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap md:text-left text-center order-first">
-        <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <div className="block">
-          <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="cryptoroots_xyz"
-            options={{ height: 275, width: 300 }}
-          />
-        </div>
-        </div>
+          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+            <div className="block">
+              <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName="cryptoroots_xyz"
+                options={{ height: 275, width: 300 }}
+              />
+            </div>
+          </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <nav className="list-none mb-10 mt-6 md:mt-0">
               <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
@@ -40,16 +61,6 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href=""
-                  className="text-gray-600 hover:text-gray-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Contracts
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://github.com/akhileshthite/cryptoroots.xyz/discussions"
                   className="text-gray-600 hover:text-gray-800"
                   target="_blank"
@@ -60,6 +71,31 @@ function Footer() {
               </li>
               <li>
                 <a
+                  href={`https://mumbai.polygonscan.com/address/${contractAddress}`}
+                  className="text-gray-600 hover:text-gray-800 inline-flex items-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Contracts
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={notReleased}
                   className="text-gray-600 hover:text-gray-800"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -69,6 +105,7 @@ function Footer() {
               </li>
               <li>
                 <a
+                  onClick={notReleased}
                   className="text-gray-600 hover:text-gray-800"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -95,6 +132,16 @@ function Footer() {
               </li>
               <li>
                 <a
+                  href="https://polygon.technology/"
+                  className="text-gray-600 hover:text-gray-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Polygon Technology
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on."
                   className="text-gray-600 hover:text-gray-800"
                   target="_blank"
@@ -109,27 +156,36 @@ function Footer() {
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
               DONATION UPDATES
             </h2>
-            <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
-              <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
-                <label
-                  for="footer-field"
-                  className="leading-7 text-sm text-gray-600"
+            <form onSubmit={submitHandler}>
+              <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
+                <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
+                  <label
+                    for="footer-field"
+                    className="leading-7 text-sm text-gray-600"
+                  >
+                    We respect your inbox.
+                  </label>
+                  <input
+                    type="email"
+                    onChange={inputHandler}
+                    value={input}
+                    id="footer-field"
+                    placeholder="email address"
+                    name="footer-field"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded"
                 >
-                  We respect your inbox.
-                </label>
-                <input
-                  type="text"
-                  id="footer-field"
-                  placeholder="email address"
-                  name="footer-field"
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+                  Subscribe
+                </button>
               </div>
-              <button onClick={subscribe} className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded">
-                Subscribe
-              </button>
-            </div>
-            <p className="text-gray-500 text-sm mt-2 md:text-left text-center">{email}</p>
+            </form>
+            <p className="text-green-600 text-sm mt-2 md:text-left text-center">
+              {subscribe}
+            </p>
           </div>
         </div>
       </div>

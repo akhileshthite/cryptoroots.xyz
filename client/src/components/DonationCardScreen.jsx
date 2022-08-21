@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 import logo from "../images/logo_header.png";
+import Plant from "../images/plant.gif";
 
 function DonationCardScreen({
   connectWallet,
@@ -251,21 +252,30 @@ function DonationCardScreen({
                           Here's your climate change NFT badge.
                         </p>
                         <center>
-                          <img
-                            className="rounded-md mt-4"
-                            width={200}
-                            src={nftImage}
-                            alt="NFT badge"
-                          />
+                          {nftImage ? (
+                            <img
+                              className="rounded-md mt-4"
+                              width={200}
+                              src={nftImage}
+                              alt="NFT badge"
+                            />
+                          ) : (
+                            <img
+                              className="mt-4"
+                              width={200}
+                              src={Plant}
+                              alt="Loading gif"
+                            ></img>
+                          )}
                         </center>
                         <p className="text-gray-700 mt-4 text-sm">
                           Track your trees on "My trees page".
                         </p>
                         <Link to="/mytreesscreen">
-                          <button class="text-green-500 inline-flex items-center mt-4 md:mb-2 lg:mb-0">
+                          <button className="text-green-500 inline-flex items-center mt-4 md:mb-2 lg:mb-0">
                             My trees page
                             <svg
-                              class="w-4 h-4 ml-1"
+                              className="w-4 h-4 ml-1"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                               stroke-width="2"

@@ -14,17 +14,19 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@walletconnect/web3-provider": "^1.8.0",
+    "env-cmd": "^10.1.0",
+    "firebase": "^9.9.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^4.0.0",
+    "react-scripts": "^4.0.3",
     "react-spinners": "^0.13.3",
     "react-twitter-embed": "^4.0.4",
     "web3": "^1.7.3",
     "web3modal": "^1.9.8"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f ../.env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
