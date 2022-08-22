@@ -12,9 +12,9 @@
     <img src="https://img.shields.io/github/v/release/akhileshthite/cryptoroots.xyz?color=blue&style=flat-square" alt="Release">
 </div><br>
 
-[cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users offset their carbon footprint by planting trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change impact badges. Let’s unlock the true potential of NFTs. Let's save our planet.
+[cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users to offset their carbon footprint by planting trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change impact badges. Let’s unlock the true potential of NFTs. Let's save our planet.
 
-cryptoroots.xyz is a No-profit organization, 100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees they've planted, how much area is covered, how much carbon emission is reversed/year. The platform is designed to encourage everyone to go carbon neutral.
+cryptoroots.xyz is a No-profit organization, 100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees they've planted, how much area is covered, and how much carbon emission is reversed/year. The platform is designed to encourage everyone to go carbon neutral.
 
 ### Qualifying bounties:
 * **Polygon (public goods track):**
