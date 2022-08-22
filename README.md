@@ -1,3 +1,5 @@
+> Polygon BUIDL IT Summer 2022 Hackathon Submission
+
 <p align="center">
     <img align="center" src="/client/src/images/logo_header.png" width="300"></img>
 </p>
@@ -10,18 +12,41 @@
     <img src="https://img.shields.io/github/v/release/akhileshthite/cryptoroots.xyz?color=blue&style=flat-square" alt="Release">
 </div><br>
 
-[cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users to plant trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change NFT badges. All the NFT badges are [AI-generated](https://openai.com/blog/dall-e/) art, honoring the best artists in the world. Planting a tree is always better than spending millions on monkey images! Let’s use NFTs to save the planet!
+[cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users offset their carbon footprint by planting trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change impact badges. Let’s unlock the true potential of NFTs. Let's save our planet.
 
-100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees we've planted, how much area is covered, how much carbon emission is reversed, and so much about climate change.
+cryptoroots.xyz is a No-profit organization, 100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees they've planted, how much area is covered, how much carbon emission is reversed/year. The platform is designed to encourage everyone to go carbon neutral.
 
-### Benefits of climate change NFTs:
+### Qualifying bounties:
+* **Polygon (public goods track):**
+<br/>-> Testnet deployed contract: https://mumbai.polygonscan.com/address/0x817EA2ec4B67673823A4B06E187D3E9762C02384
+<br/>-> Smart contracts: https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/contracts/CryptoRoots.sol#L1486
 
-- **Offset carbon emission:** Plant trees! An average grown tree offsets 24kg of co2/year.
-- **Save soil:** Because of soil extinction, the number of microbes (8 billion in a handful of soil) is decreasing. Soil is a major source of nutrients needed by plants for growth. Trees are the solution! They reduce soil erosion.
-- **Climate change awareness:** Show your environmental impact, NFTs are verifiable digital assets on the blockchain.
-- **Gifts:** Gift plants instead of things that produce carbon.
-- **Tickets:** Get access to global environmental events/activities as NFT tickets.
-- **Community:** Show your environmental work, and collaborate with environmental activists all over the world.
+* **IPFS/Filecoin:**
+<br/>-> nft.storage (NFTs & metadata): https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/client/src/components/DonationCardScreen.jsx#L161
+<br/>-> Deployed dapp on IPFS: https://dweb.link/ipfs/QmRQVPh818cSQKL6HQ9eL8aDNAqu1rDM2GSDPc3DXHDbdW/
+
+* **Chainlink (data feeds to get the latest MATIC/USD prices):**
+<br/>-> https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/contracts/CryptoRoots.sol#L1521
+
+* **Sequence wallet:**
+<br/>-> https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/client/src/App.jsx#L70
+
+* **Spheron protocol IPFS deployment:**
+<br/>-> https://hackathon-rdcxao.spheron.app/
+
+### Roadmap (after Hackathon tasks):
+- [ ] Research and implement [biconomy](https://www.biconomy.io/) for gasless transactions and to receive funds in USDC on Polygon Mainnet.
+- [ ] Create a subgraph to query totalSupply data from the blockchain by using [The Graph protocol](https://thegraph.com/en/) (so that the stats will be visible without connecting the wallet).
+- [ ] Leaderboard (maximum number of trees donated).
+- [ ] Write tests in mocha, follow best security practices in Solidity, learn more in this [article](https://consensys.net/blog/developers/solidity-best-practices-for-smart-contract-security/).
+- [ ] Resolve erc-1155 contract verification error (Unable to generate Contract ByteCode and ABI).
+- [ ] A co2 emission calculator that tells how much an individual is emitting CO2/year and how many trees they need to offset their CO2 footprint (make a predictive ML model based on datasets).
+- [ ] FAQ section for better UX.
+- [ ] Whitepaper.
+- [ ] Improve NFT artwork before public launch (animated cards that contain info regarding CO2 emission).
+- [ ] Improve UI.
+- [ ] Deploy on Polygon Mainnet.
+
 
 ## Development
 
