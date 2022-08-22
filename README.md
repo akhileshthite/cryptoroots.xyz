@@ -4,6 +4,12 @@
 
 <h1 align="center">cryptoroots.xyz</h1>
 
+<div align="center">
+    <img src="https://img.shields.io/badge/platform-polygon-purple.svg?style=flat-square" alt="Platform">
+    <img src="https://img.shields.io/github/license/akhileshthite/cryptoroots.xyz?color=orange&style=flat-square" alt="License">
+    <img src="https://img.shields.io/github/v/release/akhileshthite/cryptoroots.xyz?color=blue&style=flat-square" alt="Release">
+</div><br>
+
 [cryptoroots.xyz](https://cryptoroots.xyz/) is a platform that allows users to plant trees ($1 = 1 tree) and earn [ERC-1155](https://docs.openzeppelin.com/contracts/3.x/erc1155#:~:text=ERC1155%20is%20a%20novel%20token,their%20guides%20before%20moving%20on.) powered climate change NFT badges. All the NFT badges are [AI-generated](https://openai.com/blog/dall-e/) art, honoring the best artists in the world. Planting a tree is always better than spending millions on monkey images! Let’s use NFTs to save the planet!
 
 100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees we've planted, how much area is covered, how much carbon emission is reversed, and so much about climate change.
@@ -87,10 +93,9 @@ Starting the development server...
 
 ## Contribution
 
-* Thanks for your interest in contributing to cryptoroots.xyz. There are many ways you can contribute to the project.
-* To start, take a few minutes to read the "[contribution guide](https://github.com/akhileshthite/cryptoroots.xyz/blob/main/.github/CONTRIBUTING.md)".
-* We look forward to your [pull requests](https://github.com/akhileshthite/cryptoroots.xyz/pulls) and / or involvement in our [issues page](https://github.com/akhileshthite/cryptoroots.xyz/issues).
-
+- Thanks for your interest in contributing to cryptoroots.xyz. There are many ways you can contribute to the project.
+- To start, take a few minutes to read the "[contribution guide](https://github.com/akhileshthite/cryptoroots.xyz/blob/main/.github/CONTRIBUTING.md)".
+- We look forward to your [pull requests](https://github.com/akhileshthite/cryptoroots.xyz/pulls) and / or involvement in our [issues page](https://github.com/akhileshthite/cryptoroots.xyz/issues).
 
 ## License
 
