@@ -61,7 +61,8 @@ function App() {
             options: {
               network: "mumbai",
               rpc: {
-                80001: "https://polygon-mumbai.infura.io/v3/",
+                80001:
+                  "https://polygon-mumbai.infura.io/v3/",
               },
               infuraId: process.env.REACT_APP_INFURA_MATIC_TESTNET,
             },
@@ -76,11 +77,11 @@ function App() {
         },
       });
       const provider = await web3Modal.connect();
-      const web3 = new Web3(provider);
-      if (web3) {
+      const web3Provider = new Web3(provider);
+      if (web3Provider) {
         setIsConnected(!isConnected);
         // Get account address
-        const accounts = await web3.eth.getAccounts();
+        const accounts = await web3Provider.eth.getAccounts();
         const account = accounts[0];
         setAccountAddress(account);
       } else {
@@ -113,7 +114,7 @@ function App() {
         </div>
       ) : (
         <>
-          {getWeb3 && accountAddress && getCryptoRootsContract ? (
+          {getWeb3 && getCryptoRootsContract ? (
             <Router>
               <Navbar network={getNetwork} />
               <Routes>
