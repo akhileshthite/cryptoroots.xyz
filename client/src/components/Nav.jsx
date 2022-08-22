@@ -5,12 +5,13 @@ import Logo from "../images/logo.png";
 
 function Navbar({ network }) {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       {network != "137" && network != "80001" && network != "4" ? (
         <div className="text-center w-full rounded-sm shadow-md p-2 bg-red-200">
           <p className="text-gray-600">
-            ⚠️ Please switch your network to polygon-mumbai or rinkeby.
+            ⚠️ Please switch your network to polygon-mumbai or rinkeby & refresh the page.
           </p>
         </div>
       ) : (
@@ -20,24 +21,21 @@ function Navbar({ network }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center ml-8">
-              <span className="flex title-font font-medium items-center text-gray-900 md:mb-0">
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  className="w-12 h-12 p-1 rounded-full"
-                />
-                <span className="ml-2 text-xl">CryptoRoots</span>
-              </span>
+              <Link to="/">
+                <span className="flex title-font font-medium items-center text-gray-900 md:mb-0">
+                  <img
+                    src={Logo}
+                    alt="Logo"
+                    className="w-12 h-12 p-1 rounded-full"
+                  />
+                  <span className="ml-2 text-xl">CryptoRoots</span>
+                </span>
+              </Link>
               <div className="md:mr-auto md:ml-4 md:py-4 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center" />
               <div className="hidden md:block">
                 <div className="flex items-baseline space-x-4">
-                  <Link to="/">
-                    <button className="text-lg text-green-700 hover:bg-gray-100 px-3 py-2 rounded-md font-medium">
-                      Home
-                    </button>
-                  </Link>
                   <a
-                    href="#about"
+                    href="/#about"
                     className="text-lg text-green-700 hover:bg-gray-100 px-3 py-2 rounded-md font-medium"
                   >
                     About
