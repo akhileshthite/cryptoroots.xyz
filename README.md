@@ -1,5 +1,3 @@
-> Polygon BUIDL IT Summer 2022 Hackathon Submission
-
 <p align="center">
     <img align="center" src="/client/src/images/logo_header.png" width="300"></img>
 </p>
@@ -16,25 +14,8 @@
 
 cryptoroots.xyz is a No-profit organization, 100% of the cryptoroots funds will be donated to [#teamtrees](https://teamtrees.org/) cause (founded by YouTubers Mr. Beast and Mark Rober in 2019, they’ve planted 20 million + trees till now). We will frequently release donation receipts on our platform for transparency (will send emails to those who opt to subscribe to our mailing list). Also, users can track how many trees they've planted, how much area is covered, and how much carbon emission is reversed/year. The platform is designed to encourage everyone to go carbon neutral.
 
-### Qualifying bounties:
-* **Polygon (public goods track):**
-<br/>-> Testnet deployed contract: https://mumbai.polygonscan.com/address/0x817EA2ec4B67673823A4B06E187D3E9762C02384
-<br/>-> Smart contracts: https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/contracts/CryptoRoots.sol#L1486
 
-* **IPFS/Filecoin:**
-<br/>-> nft.storage (NFTs & metadata): https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/client/src/components/DonationCardScreen.jsx#L161
-<br/>-> Deployed dapp on IPFS: https://dweb.link/ipfs/QmRQVPh818cSQKL6HQ9eL8aDNAqu1rDM2GSDPc3DXHDbdW/
-
-* **Chainlink (data feeds to get the latest MATIC/USD prices):**
-<br/>-> https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/contracts/CryptoRoots.sol#L1521
-
-* **Sequence wallet:**
-<br/>-> https://github.com/akhileshthite/cryptoroots.xyz/blob/ab653da054d3510806eef65de025e4b36b7fe7a4/client/src/App.jsx#L70
-
-* **Spheron protocol IPFS deployment:**
-<br/>-> https://hackathon-rdcxao.spheron.app/
-
-### Roadmap (after Hackathon tasks):
+### Roadmap:
 - [ ] Research and implement [biconomy](https://www.biconomy.io/) for gasless transactions and to receive funds in USDC on Polygon Mainnet.
 - [ ] Create a subgraph to query totalSupply data from the blockchain by using [The Graph protocol](https://thegraph.com/en/) (so that the stats will be visible without connecting the wallet).
 - [ ] Leaderboard (maximum number of trees donated).
