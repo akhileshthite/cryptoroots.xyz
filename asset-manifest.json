@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.cd9f9052.chunk.css",
-    "main.js": "/static/js/main.32cb0d87.chunk.js",
-    "main.js.map": "/static/js/main.32cb0d87.chunk.js.map",
+    "main.js": "/static/js/main.aae59669.chunk.js",
+    "main.js.map": "/static/js/main.aae59669.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4c6bfca6.js",
     "runtime-main.js.map": "/static/js/runtime-main.4c6bfca6.js.map",
-    "static/js/2.9307b889.chunk.js": "/static/js/2.9307b889.chunk.js",
-    "static/js/2.9307b889.chunk.js.map": "/static/js/2.9307b889.chunk.js.map",
+    "static/js/2.98410653.chunk.js": "/static/js/2.98410653.chunk.js",
+    "static/js/2.98410653.chunk.js.map": "/static/js/2.98410653.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.cd9f9052.chunk.css.map": "/static/css/main.cd9f9052.chunk.css.map",
-    "static/js/2.9307b889.chunk.js.LICENSE.txt": "/static/js/2.9307b889.chunk.js.LICENSE.txt",
+    "static/js/2.98410653.chunk.js.LICENSE.txt": "/static/js/2.98410653.chunk.js.LICENSE.txt",
     "static/media/earth_heart.7461a9a7.png": "/static/media/earth_heart.7461a9a7.png",
     "static/media/logo.77891967.png": "/static/media/logo.77891967.png",
     "static/media/logo_header.dd91ab49.png": "/static/media/logo_header.dd91ab49.png",
@@ -21,8 +21,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4c6bfca6.js",
-    "static/js/2.9307b889.chunk.js",
+    "static/js/2.98410653.chunk.js",
     "static/css/main.cd9f9052.chunk.css",
-    "static/js/main.32cb0d87.chunk.js"
+    "static/js/main.aae59669.chunk.js"
   ]
 }
